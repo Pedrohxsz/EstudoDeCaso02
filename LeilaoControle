@@ -1,0 +1,24 @@
+class LeilaoControle {
+    private Leilao leilao;
+
+    public LeilaoControle() {
+        this.leilao = new Leilao();
+    }
+
+    public void adicionarLote(String descricao) {
+        this.leilao.adicionaLote(descricao);
+        System.out.println("Lote adicionado com sucesso.");
+    }
+
+    public void mostrarLotes() {
+        this.leilao.mostraLotes();
+    }
+
+    public void darLance(int numeroLote, Pessoa licitante, double valor) {
+        Lote lote = this.leilao.getLote(numeroLote);
+        if (lote != null) {
+            lote.lancePara(licitante, valor);
+            System.out.println("Lance registrado com sucesso.");
+        }
+    }
+}
