@@ -1,5 +1,4 @@
-
-public class Lote {
+class Lote {
     private int numero;
     private String descricao;
     private Lance maiorLance;
@@ -10,23 +9,23 @@ public class Lote {
     }
 
     public int getNumero() {
-        return this.numero;
+        return numero;
     }
 
     public String getDescricao() {
-        return this.descricao;
+        return descricao;
     }
 
     public Lance getMaiorLance() {
-        return this.maiorLance;
+        return maiorLance;
     }
 
     public void lancePara(Pessoa licitante, double valor) {
         if (this.maiorLance == null || (this.maiorLance.getValor() < valor)) {
             this.setMaiorLance(new Lance(licitante, valor));
         } else {
-            System.out.println("Lote no: " + this.getNumero() + "(" +
-                    this.getDescricao() + ")" + "Atualmente tem um lance de: " + this.maiorLance.getValor());
+            System.out.println("Lote no: " + this.getNumero() + "(" + this.getDescricao() + ")"
+                    + "Atualmente tem um lance de: " + this.maiorLance.getValor());
         }
     }
 
