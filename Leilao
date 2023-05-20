@@ -1,13 +1,6 @@
-
-import java.util.ArrayList;
-import java.util.Iterator;
-
-public class Leilao{
+class Leilao {
     private ArrayList<Lote> lotes;
     private int numeroProxLote;
-
-    prvate boolean encerrado;
-
 
     public Leilao() {
         this.lotes = new ArrayList<>();
@@ -25,7 +18,6 @@ public class Leilao{
             Lote lote = it.next();
             System.out.println(lote.getNumero() + ": " + lote.getDescricao());
             Lance melhorLance = lote.getMaiorLance();
-
             if (melhorLance != null) {
                 System.out.println(" Lance:" + melhorLance.getValor());
             } else {
@@ -40,33 +32,10 @@ public class Leilao{
             if (loteSelecionado.getNumero() != numero) {
                 System.out.println("Erro!!");
             }
-
             return loteSelecionado;
         } else {
-            System.out.println("Lote numero " + numero + "não existe");
+            System.out.println("Lote numero " + numero + " não existe");
             return null;
         }
     }
-    public ArrayList getNaoVendidos() {
-        if (this.encerrado){
-
-        }
-    }
-
-    public Lote removeLote(int numero) {
-
-    }
-
-    public void fechaLeilao(String descricao, Lance maiorlance) {
-        if(this.encerrado){
-            for (Lote loteAtual: this.lotes){
-                if (melhorLance != null){
-
-                }
-            }
-        }
-
-    }
-
 }
- 	
