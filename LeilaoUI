@@ -2,11 +2,11 @@
 import java.util.Scanner;
 
 public class LeilaoUI {
-    private LeilaoController controller;
+    private LeilaoControle controle;
     private Scanner scanner;
     
     public LeilaoUI() {
-        controller = new LeilaoController();
+        controle = new LeilaoControle();
         scanner = new Scanner(System.in);
     }
     
@@ -64,7 +64,7 @@ public class LeilaoUI {
         scanner.nextLine(); // Consumir a quebra de linha pendente
         System.out.print("Digite a descrição do lote: ");
         String descricao = scanner.nextLine();
-        controller.adicionaLote(descricao);
+        controle.adicionaLote(descricao);
         System.out.println("Lote adicionado com sucesso!");
     }
     
@@ -92,7 +92,7 @@ public class LeilaoUI {
     }
     
     private void mostrarNaoVendidos() {
-        ArrayList<Lote> naoVendidos = controller.getNaoVendidos();
+        ArrayList<Lote> naoVendidos = controle.getNaoVendidos();
         if (naoVendidos.isEmpty()) {
             System.out.println("Todos os lotes foram vendidos!");
         } else {
