@@ -24,7 +24,7 @@ class Lote {
         if (this.maiorLance == null || (this.maiorLance.getValor() < valor)) {
             this.setMaiorLance(new Lance(licitante, valor));
         } else {
-            System.out.println("Lote no: " + this.getNumero() + "(" + this.getDescricao() + ")"
+            System.out.println("Lote " + this.getNumero() + " (" + this.getDescricao() + ") "
                     + "Atualmente tem um lance de: " + this.maiorLance.getValor());
         }
     }
