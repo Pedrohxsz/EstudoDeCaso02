@@ -1,15 +1,14 @@
-// Classe LeilaoUI
 import java.util.Scanner;
 
 public class LeilaoUI {
     private LeilaoControle controle;
     private Scanner scanner;
-    
+
     public LeilaoUI() {
         controle = new LeilaoControle();
         scanner = new Scanner(System.in);
     }
-    
+
     public void executar() {
         int opcao = 0;
         do {
@@ -42,7 +41,7 @@ public class LeilaoUI {
             }
         } while (opcao != 0);
     }
-    
+
     private void exibirMenu() {
         System.out.println("----- Sistema de Leilão Virtual -----");
         System.out.println("1. Adicionar lote");
@@ -54,25 +53,25 @@ public class LeilaoUI {
         System.out.println("0. Sair");
         System.out.println("--------------------------------------");
     }
-    
+
     private int lerOpcao() {
         System.out.print("Digite a opção desejada: ");
         return scanner.nextInt();
     }
-    
+
     private void adicionarLote() {
-        scanner.nextLine(); // Consumir a quebra de linha pendente
+        scanner.nextLine(); 
         System.out.print("Digite a descrição do lote: ");
         String descricao = scanner.nextLine();
-        controle.adicionaLote(descricao);
+        controller.adicionarLote(descricao);
         System.out.println("Lote adicionado com sucesso!");
     }
-    
+
     private void darLance() {
         mostrarLotes();
         System.out.print("Digite o número do lote: ");
         int numeroLote = scanner.nextInt();
-        scanner.nextLine(); // Consumir a quebra de linha pendente
+        scanner.nextLine();
         System.out.print("Digite o nome do licitante: ");
         String nomeLicitante = scanner.nextLine();
         System.out.print("Digite o valor do lance: ");
@@ -81,18 +80,18 @@ public class LeilaoUI {
         controller.darLance(numeroLote, licitante, valorLance);
         System.out.println("Lance dado com sucesso!");
     }
-    
+
     private void mostrarLotes() {
         controller.mostraLotes();
     }
-    
+
     private void fecharLeilao() {
         controller.close();
         System.out.println("Leilão fechado!");
     }
-    
+
     private void mostrarNaoVendidos() {
-        ArrayList<Lote> naoVendidos = controle.getNaoVendidos();
+        ArrayList<Lote> naoVendidos = controller.getNaoVendidos();
         if (naoVendidos.isEmpty()) {
             System.out.println("Todos os lotes foram vendidos!");
         } else {
@@ -102,7 +101,7 @@ public class LeilaoUI {
             }
         }
     }
-    
+
     private void removerLote() {
         mostrarLotes();
         System.out.print("Digite o número do lote que deseja remover: ");
@@ -113,9 +112,7 @@ public class LeilaoUI {
         } else {
             System.out.println("Lote não encontrado!");
         }
-    }
-    
-    public static void main(String[] args) {
+    }public static void main(String[] args) {
         LeilaoUI ui = new LeilaoUI();
         ui.executar();
     }
