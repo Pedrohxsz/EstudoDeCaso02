@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+
 class Leilao {
     private ArrayList<Lote> lotes;
     private int numeroProxLote;
