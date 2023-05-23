@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class LeilaoUI {
     private LeilaoControle controle;
     private Scanner scanner;
@@ -60,10 +58,10 @@ public class LeilaoUI {
     }
 
     private void adicionarLote() {
-        scanner.nextLine(); 
+        scanner.nextLine();
         System.out.print("Digite a descrição do lote: ");
         String descricao = scanner.nextLine();
-        controller.adicionarLote(descricao);
+        controle.adicionarLote(descricao);
         System.out.println("Lote adicionado com sucesso!");
     }
 
@@ -71,27 +69,27 @@ public class LeilaoUI {
         mostrarLotes();
         System.out.print("Digite o número do lote: ");
         int numeroLote = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); 
         System.out.print("Digite o nome do licitante: ");
         String nomeLicitante = scanner.nextLine();
         System.out.print("Digite o valor do lance: ");
         double valorLance = scanner.nextDouble();
         Pessoa licitante = new Pessoa(nomeLicitante);
-        controller.darLance(numeroLote, licitante, valorLance);
+        controle.darLance(numeroLote, licitante, valorLance);
         System.out.println("Lance dado com sucesso!");
     }
 
     private void mostrarLotes() {
-        controller.mostraLotes();
+        controle.mostrarLotes();
     }
 
     private void fecharLeilao() {
-        controller.close();
+        controle.fecharLeilao();
         System.out.println("Leilão fechado!");
     }
 
     private void mostrarNaoVendidos() {
-        ArrayList<Lote> naoVendidos = controller.getNaoVendidos();
+        ArrayList<Lote> naoVendidos = controle.getNaoVendidos();
         if (naoVendidos.isEmpty()) {
             System.out.println("Todos os lotes foram vendidos!");
         } else {
@@ -106,13 +104,15 @@ public class LeilaoUI {
         mostrarLotes();
         System.out.print("Digite o número do lote que deseja remover: ");
         int numeroLote = scanner.nextInt();
-        Lote loteRemovido = controller.removeLote(numeroLote);
+        Lote loteRemovido = controle.removerLote(numeroLote);
         if (loteRemovido != null) {
             System.out.println("Lote removido: " + loteRemovido.getDescricao());
         } else {
             System.out.println("Lote não encontrado!");
         }
-    }public static void main(String[] args) {
+    }
+
+    public static void main(String[] args) {
         LeilaoUI ui = new LeilaoUI();
         ui.executar();
     }
