@@ -2,23 +2,30 @@ class LeilaoControle {
     private Leilao leilao;
 
     public LeilaoControle() {
-        this.leilao = new Leilao();
+        leilao = new Leilao();
     }
 
     public void adicionarLote(String descricao) {
-        this.leilao.adicionaLote(descricao);
-        System.out.println("Lote adicionado com sucesso.");
+        leilao.adicionarLote(descricao);
+    }
+
+    public void darLance(int numeroLote, Pessoa licitante, double valorLance) {
+        leilao.darLance(numeroLote, licitante, valorLance);
     }
 
     public void mostrarLotes() {
-        this.leilao.mostraLotes();
+        leilao.mostrarLotes();
     }
 
-    public void darLance(int numeroLote, Pessoa licitante, double valor) {
-        Lote lote = this.leilao.getLote(numeroLote);
-        if (lote != null) {
-            lote.lancePara(licitante, valor);
-            System.out.println("Lance registrado com sucesso.");
-        }
+    public void fecharLeilao() {
+        leilao.fecharLeilao();
+    }
+
+    public ArrayList<Lote> getNaoVendidos() {
+        return leilao.getNaoVendidos();
+    }
+
+    public Lote removerLote(int numeroLote) {
+        return leilao.removerLote(numeroLote);
     }
 }
