@@ -8,10 +8,13 @@ public class LeilaoUI {
     }
 
     public void executar() {
-        int opcao = 0;
-        do {
-            exibirMenu();
-            opcao = lerOpcao();
+        int opcao = -1;
+
+        while (opcao != 0) {
+            mostrarMenu();
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Limpar o buffer do scanner
+
             switch (opcao) {
                 case 1:
                     adicionarLote();
@@ -32,33 +35,28 @@ public class LeilaoUI {
                     removerLote();
                     break;
                 case 0:
-                    System.out.println("Encerrando o programa...");
+                    System.out.println("Encerrando o programa.");
                     break;
                 default:
-                    System.out.println("Opção inválida! Tente novamente.");
+                    System.out.println("Opção inválida. Digite novamente.");
+                    break;
             }
-        } while (opcao != 0);
+        }
     }
 
-    private void exibirMenu() {
-        System.out.println("----- Sistema de Leilão Virtual -----");
-        System.out.println("1. Adicionar lote");
-        System.out.println("2. Dar lance");
-        System.out.println("3. Mostrar lotes");
-        System.out.println("4. Fechar leilão");
-        System.out.println("5. Mostrar lotes não vendidos");
-        System.out.println("6. Remover lote");
-        System.out.println("0. Sair");
-        System.out.println("--------------------------------------");
-    }
-
-    private int lerOpcao() {
+    private void mostrarMenu() {
+        System.out.println("========== MENU ==========");
+        System.out.println("1 - Adicionar lote");
+        System.out.println("2 - Dar lance");
+        System.out.println("3 - Mostrar lotes");
+        System.out.println("4 - Fechar leilão");
+        System.out.println("5 - Mostrar lotes não vendidos");
+        System.out.println("6 - Remover lote");
+        System.out.println("0 - Sair");
         System.out.print("Digite a opção desejada: ");
-        return scanner.nextInt();
     }
 
     private void adicionarLote() {
-        scanner.nextLine();
         System.out.print("Digite a descrição do lote: ");
         String descricao = scanner.nextLine();
         controle.adicionarLote(descricao);
@@ -69,7 +67,7 @@ public class LeilaoUI {
         mostrarLotes();
         System.out.print("Digite o número do lote: ");
         int numeroLote = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine(); // Limpar o buffer do scanner
         System.out.print("Digite o nome do licitante: ");
         String nomeLicitante = scanner.nextLine();
         System.out.print("Digite o valor do lance: ");
@@ -102,18 +100,20 @@ public class LeilaoUI {
 
     private void removerLote() {
         mostrarLotes();
-        System.out.print("Digite o número do lote que deseja remover: ");
+        System.out.print("Digite o número do lote a ser removido: ");
         int numeroLote = scanner.nextInt();
         Lote loteRemovido = controle.removerLote(numeroLote);
         if (loteRemovido != null) {
-            System.out.println("Lote removido: " + loteRemovido.getDescricao());
+            System.out.println("Lote removido: " + loteRemovido.getNumero() + " - Descrição: " + loteRemovido.getDescricao());
         } else {
             System.out.println("Lote não encontrado!");
         }
     }
 
     public static void main(String[] args) {
-        LeilaoUI ui = new LeilaoUI();
-        ui.executar();
-    }
-}
+        LeilaoUI leilaoUI = new LeilaoUI();
+        leilaoUI.executar();
+        
+        }
+   }
+     
