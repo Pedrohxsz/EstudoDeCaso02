@@ -6,7 +6,7 @@ class LeilaoControle {
     }
 
     public void adicionarLote(String descricao) {
-        leilao.adicionarLote(descricao);
+        leilao.adicionaLote(descricao);
     }
 
     public void darLance(int numeroLote, Pessoa licitante, double valorLance) {
@@ -14,7 +14,7 @@ class LeilaoControle {
     }
 
     public void mostrarLotes() {
-        leilao.mostrarLotes();
+        leilao.mostraLotes();
     }
 
     public void fecharLeilao() {
@@ -26,6 +26,6 @@ class LeilaoControle {
     }
 
     public Lote removerLote(int numeroLote) {
-        return leilao.removerLote(numeroLote);
+        return leilao.removeLote(numeroLote);
     }
 }
