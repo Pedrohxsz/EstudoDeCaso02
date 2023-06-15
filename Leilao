@@ -40,6 +40,9 @@ class Leilao {
             System.out.println("Lote número " + numero + " não existe");
             return null;
         }
+         public Lote removeLote(int numero) {
+
+        }
     }
 
     public void close() {
@@ -54,5 +57,11 @@ class Leilao {
             }
             System.out.println();
         }
+         public void fechaLeilao(String descricao, Lance maiorlance) {
+        if(this.encerrado){
+            for (Lote loteAtual: this.lotes){
+                if (melhorLance != null){
+                     }
+            }
     }
 }
